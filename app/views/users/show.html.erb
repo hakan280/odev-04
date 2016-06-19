@@ -1,0 +1,28 @@
+<h1>Users#show</h1>
+
+<p class="lead">
+	<% @users.each do |user| %>
+		<%= link_to user.email, user_movies_path(user)%> 
+	<%end%>
+</p>
+
+<table class="table table-striped">
+	<thead>
+		<th>Movie Name</th>
+		<th>Point</th>
+	</thead>
+	<tbody>
+	
+
+		<% @ratings.each do |r|%>
+			<% movie = find_movie (r.movie_id) %>
+			
+				<tr>
+					<td><%=link_to movie.title, movie_path(movie)%></td>
+					<td><%=r.point%></td>
+				</tr>
+				
+		<% end %>
+</tbody>
+		
+</table>

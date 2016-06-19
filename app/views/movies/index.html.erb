@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Add Movie' , new_movie_path , class: 'btn btn-info'%>
+
 <h1>Listing Movies</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Director</th>
       <th>Country</th>
       <th>Date</th>
@@ -18,18 +19,13 @@
     <% @movies.each do |movie| %>
       <tr>
         <td><%= movie.title %></td>
-        <td><%= movie.description %></td>
         <td><%= movie.director %></td>
         <td><%= movie.country %></td>
         <td><%= movie.date %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+        <td><%= link_to 'Show', movie %> </td>
+        <td><%= link_to 'Edit', edit_movie_path(movie)%></td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Movie', new_movie_path %>

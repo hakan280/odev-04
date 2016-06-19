@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,6 +7,8 @@ class MoviesController < ApplicationController
   end
 
   def show
+    #ref =http://api.rubyonrails.org/classes/ActiveRecord/Calculations.html
+    @points = Rating.where(movie_id: params[:id]).group(:point).count
   end
 
   def new

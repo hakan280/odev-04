@@ -1,29 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+<% positive = @points[1] || 0 %>
+<% negative = @points[-1] || 0 %>
+<% point = positive - negative %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
 
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
+    <div class="jumbotron">
+      <h2 class="text-warning"><%= @movie.title %> 
+      <button class="btn btn-info pull-right" type="button">
+            Point <span class="badge"><%= point %></span>
+      </button>
+      </h2>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @movie.country %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @movie.date %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+      <p class="lead"> <%= @movie.description %></p>
+      <p class="pull-right text-info">
+        <%= @movie.director %> -- <%= @movie.country %> -- <%= @movie.date %>  
+      </p>
+      
+      <p>
+        <a href= <%= like_path(movie_id: params[:id]) %>>
+          <button class="btn btn-success" type="button">
+            Like <span class="badge"><%= positive %></span>
+          </button>
+        </a>
+        <a href= <%= dislike_path( movie_id: params[:id]) %>>
+          <button class="btn btn-danger" type="button">
+                Dislike <span class="badge"><%= negative %></span>
+          </button>
+        </a>
+      </p>
+    </div>
+    
+  </div>
+</div>
