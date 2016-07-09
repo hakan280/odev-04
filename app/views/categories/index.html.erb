@@ -1,0 +1,11 @@
+
+<%= link_to 'Add new category' , new_category_path ,class: 'btn btn-success' %>
+
+<h3 class="text-primary">Kategoriler</h3>
+<ul style="list-style-type: circle;">
+	<% @categories.each do |cat|%>
+		<li>
+			<span class="text-danger"><%= cat.name %> </span> <br> <%= link_to 'Edit', edit_category_path(cat) %> <%= link_to 'Destroy', category_path(cat) , method: :delete , data: {confirm: 'Are you want to delete ? '} %>
+		</li>
+	<% end %>
+</ul>
